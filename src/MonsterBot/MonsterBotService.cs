@@ -3,13 +3,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
-namespace MonsterLibrary.Bot
+namespace MonsterLibrary.MonsterBot
 {
-    public class BotService : IHostedService    
+    public class MonsterBotService : IHostedService    
     {
+        private string botKey;
+
+        public MonsterBotService(string botKey)
+        {
+            this.botKey = botKey;
+        }
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            var bot = new MonsterBot(cancellationToken);    
+            var bot = new MonsterBot(botKey, cancellationToken);    
 
             return Task.CompletedTask;  
         }

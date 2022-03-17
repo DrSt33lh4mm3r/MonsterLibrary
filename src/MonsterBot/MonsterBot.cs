@@ -7,15 +7,15 @@ using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace MonsterLibrary.Bot
+namespace MonsterLibrary.MonsterBot
 {
     public class MonsterBot
     {
         private TelegramBotClient botClient;
 
-        public MonsterBot(CancellationToken cancellationToken)
+        public MonsterBot(string botKey, CancellationToken cancellationToken)
         {
-            botClient = new TelegramBotClient("");
+            botClient = new TelegramBotClient(botKey);
 
             // StartReceiving does not block the caller thread. Receiving is done on the ThreadPool.
             var receiverOptions = new ReceiverOptions

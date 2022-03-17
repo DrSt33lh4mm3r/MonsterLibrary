@@ -1,14 +1,5 @@
-using System.Threading;
-using MonsterLibrary.Bot;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace MonsterLibrary
 {
@@ -16,6 +7,7 @@ namespace MonsterLibrary
     {
         public static void Main(string[] args)
         {
+            DotEnv.ReadEnv(".env");
             CreateHostBuilder(args).Build().Run();
         }
 
