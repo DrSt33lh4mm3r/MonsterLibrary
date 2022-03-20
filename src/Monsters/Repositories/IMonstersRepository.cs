@@ -9,7 +9,7 @@ namespace MonsterLibrary.Monsters.Repositories
     {
         Task<IEnumerable<Monster>> GetMonstersAsync();
         
-        Task<Monster> GetMonsterAsync(Guid id);
+        Task<Monster> GetMonsterAsync(string name);
 
         Task CreateMonsterAsync(Monster monster);
 

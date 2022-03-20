@@ -51,7 +51,7 @@ namespace MonsterLibrary
             services.AddHostedService<MonsterBotService>(serviceProvider =>
             {
                 string telegramBotKey = Configuration.GetValue(typeof(string), "TELEGRAM_BOT_KEY") as string;
-                return new MonsterBotService(telegramBotKey);
+                return new MonsterBotService(telegramBotKey, serviceProvider.GetService<IMonstersRepository>());
             });
         }
 

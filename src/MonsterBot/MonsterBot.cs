@@ -6,15 +6,18 @@ using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using MonsterLibrary.Monsters.Repositories;
 
 namespace MonsterLibrary.MonsterBot
 {
     public class MonsterBot
     {
         private TelegramBotClient botClient;
+        private IMonstersRepository monsterRepo;
 
-        public MonsterBot(string botKey, CancellationToken cancellationToken)
+        public MonsterBot(string botKey, CancellationToken cancellationToken, IMonstersRepository monsterRepo)
         {
+            this.monsterRepo = monsterRepo;
             botClient = new TelegramBotClient(botKey);
 
             // StartReceiving does not block the caller thread. Receiving is done on the ThreadPool.
@@ -42,12 +45,14 @@ namespace MonsterLibrary.MonsterBot
             var chatId = update.Message.Chat.Id;
             var messageText = update.Message.Text;
 
-            Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
+            var monster = await this.monsterRepo.GetMonsterAsync(messageText);
+
+            string monsterString = "Name: " + monster.name + " CR: " + monster.cr;
 
             // Echo received message text
             Message sentMessage = await botClient.SendTextMessageAsync(
                 chatId: chatId,
-                text: "You said:\n" + messageText,
+                text: monsterString,
                 cancellationToken: cancellationToken);
         }
 

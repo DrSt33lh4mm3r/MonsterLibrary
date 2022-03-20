@@ -35,9 +35,9 @@ namespace MonsterLibrary.Monsters.Repositories
             await monstersCollection.DeleteOneAsync(filter);
         }
 
-        public async Task<Monster> GetMonsterAsync(Guid id)
+        public async Task<Monster> GetMonsterAsync(string name)
         {
-            var filter = filterBuilder.Eq(existingMonster => existingMonster.Id, id);
+            var filter = filterBuilder.Eq(existingMonster => existingMonster.name, name);
             return await monstersCollection.Find(filter).SingleOrDefaultAsync();
         }
 

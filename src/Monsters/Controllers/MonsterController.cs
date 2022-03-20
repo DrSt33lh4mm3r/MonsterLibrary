@@ -29,11 +29,11 @@ namespace MonsterLibrary.Monsters.Controllers
             return monsters;
         }
 
-        // GET /monsters/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Monster>> GetPersonAsync(Guid id)
+        // GET /monsters/{name}
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Monster>> GetPersonAsync(string name)
         {
-            var monster = await repository.GetMonsterAsync(id);
+            var monster = await repository.GetMonsterAsync(name);
 
             if (monster is null)
             {
