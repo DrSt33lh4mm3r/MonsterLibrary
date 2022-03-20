@@ -6,5 +6,10 @@ namespace MonsterLibrary.Monsters.Model
     {
         public int average { get; init; }
         public string formula { get; init; }
+
+        public override string ToString()
+        {
+            return average + " (" + formula + ")";
+        }
     }
 }
