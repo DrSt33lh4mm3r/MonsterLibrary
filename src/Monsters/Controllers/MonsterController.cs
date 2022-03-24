@@ -23,7 +23,7 @@ namespace MonsterLibrary.Monsters.Controllers
 
         // GET /monsters
         [HttpGet]
-        public async Task<IEnumerable<Monster>> GetPeopleAsync()
+        public async Task<IEnumerable<Monster>> GetMonstersAsync()
         {
             var monsters = (await repository.GetMonstersAsync()); 
             return monsters;
@@ -31,7 +31,7 @@ namespace MonsterLibrary.Monsters.Controllers
 
         // GET /monsters/{name}
         [HttpGet("{name}")]
-        public async Task<ActionResult<Monster>> GetPersonAsync(string name)
+        public async Task<ActionResult<Monster>> GetMonsterAsync(string name)
         {
             var monster = await repository.GetMonsterAsync(name);
 
@@ -45,7 +45,7 @@ namespace MonsterLibrary.Monsters.Controllers
 
         // POST /monsters
         [HttpPost]
-        public async Task<ActionResult<Monster>> CreatePersonAsync(Monster newMonster)
+        public async Task<ActionResult<Monster>> CreateMonsterAsync(Monster newMonster)
         {
             Monster monster = newMonster with
             {
@@ -54,7 +54,7 @@ namespace MonsterLibrary.Monsters.Controllers
 
             await repository.CreateMonsterAsync(monster);
 
-            return CreatedAtAction(nameof(GetPersonAsync), new { id = monster.Id}, monster);
+            return CreatedAtAction(nameof(GetMonsterAsync), new { name = monster.name}, monster);
         }
     }
 }

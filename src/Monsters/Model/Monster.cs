@@ -27,8 +27,11 @@ namespace MonsterLibrary.Monsters.Model
         public Immunities immunities { get; init; }
         public string resistances { get; init; }
         public string vulnerabilities { get; init; }
+        public MonsterSpellEntry[] spellcasting { get; init; }
         public string token { get; init; }
         public Legendary legendary { get; init; }
+
+        public LegendaryGroup legendaryGroup { get; init; }
 
     }
 }

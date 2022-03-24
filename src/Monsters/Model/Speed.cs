@@ -47,8 +47,6 @@ namespace MonsterLibrary.Monsters.Model
                 speeds.Add("burrow " + burrow + "ft.");
             }
 
-            Console.WriteLine(String.Join(", ", speeds.ToArray()));
-
             return String.Join(", ", speeds.ToArray());
         }
     }
