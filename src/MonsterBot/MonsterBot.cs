@@ -329,12 +329,12 @@ namespace MonsterLibrary.MonsterBot
 
                         if (item.name is not null && item.name != "")
                         {
-                            text = "*_" + this.EscapeMesage(item.name) + "_*";
+                            text = "*_" + this.EscapeMesage(item.name) + "_* ";
                         }
 
                         if (item.content is not null && item.content != "")
                         {
-                            text = text + " " + this.EscapeMesage(item.content);
+                            text = text + this.EscapeMesage(item.content);
                         }
 
                         lines.Add(text);
@@ -365,12 +365,12 @@ namespace MonsterLibrary.MonsterBot
 
                         if (item.name is not null && item.name != "")
                         {
-                            text = "*_" + this.EscapeMesage(item.name) + "_*";
+                            text = "*_" + this.EscapeMesage(item.name) + "_ *";
                         }
 
                         if (item.content is not null && item.content != "")
                         {
-                            text = text + " " + this.EscapeMesage(item.content);
+                            text = text + this.EscapeMesage(item.content);
                         }
 
                         lines.Add(text);
